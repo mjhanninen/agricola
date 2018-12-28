@@ -86,108 +86,114 @@
   agricola/white 255 255 255
   ;; Background
   agricola/background 236 233 224
+  agricola/background-light 236 233 224
   ;; Base colors
   agricola/red 223 32 61
   agricola/green 96 142 11
   agricola/blue 24 124 167
   ;; Ink
-  agricola/ink 118 103 126
-  )
+  agricola/ink 118 103 126)
 
-(comment
-  (agricola/with-abbreviated-prefix (a agricola)
+(apply #'custom-theme-set-faces
+       'agricola
+       (agricola/with-abbreviated-prefix ((a agricola))
 
-    (thread-first (agricola/new-spec)
+         (thread-first (agricola/new-spec)
 
-      (agricola/set-properties (:foreground :background)
-        'default a/black a/white
-        'linum a/ink a/background
-        'linum-relative-current a/ink a/background)
+           (agricola/set-properties (:foreground :background)
+             'default a/black a/white
+             'linum a/ink a/background
+             'linum-relative-current a/ink a/background)
 
-      ;; Linum needs to be derived from a face that sets everything. Otherwise
-      ;; the text next to the linum column tends to bleed in.
-      (agricola/inherit
-        ('default 'linum 'linum-relative-current))
+           ;; Linum needs to be derived from a face that sets everything. Otherwise
+           ;; the text next to the linum column tends to bleed in.
+           (agricola/inherit
+             ('default 'linum 'linum-relative-current))
 
-      (agricola/set-property
-        'cursor :background a/red
-        'highlight :foreground a/red :background a/white
-        'lazy-highlight :inherit 'highlight :background a/background-light
-        'minibuffer-prompt :foreground a/red
-        'header-line :foreground a/red
-        'link :foreground a/green :underline t
-        'hl-line :background a/white
-        'reqion :background a/background-light
-        'show-parent-match-face :background a/blue
-        'warning :foreground a/red)
+           (agricola/set-property
+             'cursor :background a/red
+             'highlight :foreground a/red :background a/white
+             'lazy-highlight :inherit 'highlight :background a/background-light
+             'minibuffer-prompt :foreground a/red
+             'header-line :foreground a/red
+             'link :foreground a/green :underline t
+             'hl-line :background a/white
+             'reqion :background a/background-light
+             'show-parent-match-face :background a/blue
+             'warning :foreground a/red)
 
-      ;; Whitespace annotation
-      (agricola/set-properties (:background)
-        'trailing-whitespace a/red
-        'whitespace-trailing a/red)
-      (agricola/set-properties (:foreground)
-        'whitespace-space a/red
-        'whitespace-newline a/red)
+           ;; Whitespace annotation
+           (agricola/set-properties (:background)
+             'trailing-whitespace a/red
+             'whitespace-trailing a/red)
+           (agricola/set-properties (:foreground)
+             'whitespace-space a/red
+             'whitespace-newline a/red)
 
-      ;; XXX(soija) Odd faces that I don't recognize
-      (agricola/set-property
-        'default-italic :italic t)
+           ;; XXX(soija) Odd faces that I don't recognize
+           (agricola/set-property
+             'default-italic :italic t)
 
-      ;; Info mode
-      (agricola/set-property
-        'info-quoted-name :foreground a/red)
-      (agricola/inherit
-        ('font-lock-string 'info-string))
+           ;; Info mode
+           (agricola/set-property
+             'info-quoted-name :foreground a/red)
+           (agricola/inherit
+             ('font-lock-string 'info-string))
 
-      ;; Font-lock mode
-      (agricola/set-property
-        font-lock-warning-face :foreground a/white :background a/red
-        font-lock-comment-face :foreground a/ink
-        font-lock-doc-face :foreground a/ink
-        font-lock-function-name-face :bold t
-        font-lock-string-face :foreground a/green
-        font-lock-constant-face :foreground a/green)
-      ;; Touch these so that the previous properties become cleansed
-      (agricola/touch
-       font-lock-builtin-face
-       font-lock-keyword-face
-       font-lock-negation-char-face
-       font-lock-reference-face
-       font-lock-type-face
-       font-lock-variable-name-face)
+           ;; Font-lock mode
+           (agricola/set-property
+             'font-lock-warning-face :foreground a/white :background a/red
+             'font-lock-comment-face :foreground a/ink
+             'font-lock-doc-face :foreground a/ink
+             'font-lock-function-name-face :bold t
+             'font-lock-string-face :foreground a/green
+             'font-lock-constant-face :foreground a/green)
 
-      ;; Org mode
-      (agricola/set-property
-        'org-level-1 :foreground red
-        'org-level-1 :bold t)
-      (agricola/inherit
-        ('org-level-1 'org-level-2
-                      'org-level-3
-                      'org-level-4
-                      'org-level-5
-                      'org-level-6
-                      'org-level-7
-                      'org-level-8))
+           ;; Touch these so that the previous properties become cleansed
+           (agricola/touch
+             'font-lock-builtin-face
+             'font-lock-keyword-face
+             'font-lock-negation-char-face
+             'font-lock-reference-face
+             'font-lock-type-face
+             'font-lock-variable-name-face)
 
-      ;; Outline mode
-      (agricola/inherit
-        ('org-level-1 'outline-1)
-        ('org-level-2 'outline-2)
-        ('org-level-3 'outline-3)
-        ('org-level-4 'outline-4)
-        ('org-level-5 'outline-5)
-        ('org-level-6 'outline-6))
+           ;; Org mode
+           (agricola/set-property
+             'org-level-1 :foreground a/red
+             'org-level-1 :bold t)
 
-      ;; Markdown
-      (agricola/inherit
-        ('org-level-1 'markdown-header-face-1)
-        ('org-level-2 'markdown-header-face-2)
-        ('org-level-3 'markdown-header-face-3)
-        ('org-level-4 'markdown-header-face-4)
-        ('org-level-5 'markdown-header-face-5)
-        ('org-level-6 'markdown-header-face-6)
-        ('org-code 'markdown-code-face)
-        ('org-block 'markdown-pre-face)))))
+           (agricola/inherit
+             ('org-level-1 'org-level-2
+                           'org-level-3
+                           'org-level-4
+                           'org-level-5
+                           'org-level-6
+                           'org-level-7
+                           'org-level-8))
+
+           ;; Outline mode
+           (agricola/inherit
+             ('org-level-1 'outline-1)
+             ('org-level-2 'outline-2)
+             ('org-level-3 'outline-3)
+             ('org-level-4 'outline-4)
+             ('org-level-5 'outline-5)
+             ('org-level-6 'outline-6))
+
+           ;; Markdown
+           (agricola/inherit
+             ('org-level-1 'markdown-header-face-1)
+             ('org-level-2 'markdown-header-face-2)
+             ('org-level-3 'markdown-header-face-3)
+             ('org-level-4 'markdown-header-face-4)
+             ('org-level-5 'markdown-header-face-5)
+             ('org-level-6 'markdown-header-face-6)
+             ('org-code 'markdown-code-face)
+             ('org-block 'markdown-pre-face))
+
+           ;; Done
+           (agricola/compile-spec))))
 
 (comment
   (let* ((class '((class color) (min-colors 89)))
@@ -274,7 +280,7 @@
      'agricola
      ;; Default
 
-   ;;;;;;;
+;;;;;;;
      ;; default
      `(ffap ((,class (:foreground ,fg4))))
      `(fringe ((,class (:background ,bg1 :foreground ,fg4))))
