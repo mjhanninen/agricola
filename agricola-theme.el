@@ -1,6 +1,6 @@
 ;;; agricola-theme.el -- Agricola color theme
 
-;;; Copyright © Matti Hänninen 2017
+;;; Copyright © Matti Hänninen 2017-19
 
 ;;; Author: Matti Hänninen <matti@mjhanninen.com>
 ;;; Version: 0.1.0
@@ -16,7 +16,7 @@
 
 (require 'agricola)
 
-(deftheme agricola "A light color.")
+(deftheme agricola "A light color theme.")
 
 ;;;
 ;;; Utilities
