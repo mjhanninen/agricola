@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 ;;; agricola.el -- Supporting library for Agricola color theme
 
-;;; Copyright © Matti Hänninen 2017-18
+;;; Copyright © Matti Hänninen 2017-19
 
 (require 'generator)
 
