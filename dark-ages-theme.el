@@ -36,9 +36,8 @@
   dark-ages/gray 127 127 127
   dark-ages/background-gray 32 32 32)
 
-(apply
- ;;(comment #'custom-theme-set-faces 'dark-ages)
- #'custom-set-faces
+(apply #'custom-theme-set-faces
+       'dark-ages
  (agricola/with-abbreviated-prefix ((da dark-ages))
    (thread-first (agricola/new-spec)
 
