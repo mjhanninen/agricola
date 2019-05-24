@@ -317,7 +317,7 @@
      ;; Done
      (agricola/compile-spec))))
 
-(provide-theme 'agricola)
+(provide-theme 'dark-ages)
 
 ;; Local Variables:
 ;; no-byte-compile: t
