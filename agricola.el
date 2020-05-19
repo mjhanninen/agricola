@@ -4,6 +4,7 @@
 ;;; Copyright © Matti Hänninen 2017-19
 
 (require 'generator)
+(require 'subr-x)
 
 ;;;
 ;;; Miscallanea
